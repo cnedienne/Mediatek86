@@ -34,14 +34,23 @@ class PlaylistRepository extends ServiceEntityRepository
      * @param type $ordre
      * @return Playlist[]
      */
-    public function findAllOrderByName($ordre): array{
-        return $this->createQueryBuilder('p')
-                ->leftjoin('p.formations', 'f')
-                ->groupBy('p.id')
-                ->orderBy('p.name', $ordre)
-                ->getQuery()
-                ->getResult();       
-    } 
+    public function findAllOrderByAmount($ordre): array {
+    return $this->createQueryBuilder('p')
+        ->leftJoin('p.formations', 'f')
+        ->groupBy('p.id')
+        ->orderBy('COUNT(f.id)', $ordre) // Trie en fonction du nombre de formations
+        ->getQuery()
+        ->getResult();
+}
+// src/Repository/PlaylistRepository.php
+
+    public function findAllOrderByName($ordre = 'ASC'){
+    return $this->createQueryBuilder('p')
+        ->orderBy('p.name', $ordre) // Tri par le nom de la playlist
+        ->getQuery()
+        ->getResult();
+}
+     
 	
     /**
      * Enregistrements dont un champ contient une valeur

@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+{% block title %}{% endblock %}
+{% block stylesheets %}{% endblock %}
+{% block top %}
+    <div class="container">
+        <!-- Déconnexion -->
+        <div class="text-end">
+            <a href="{{ path('logout') }}" class="link-dark">Se déconnecter</a>
+        </div>
+        <!-- Bannière et Titre -->
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="{{ app.request.getBasePath()~'/banniere.jpg' }}" alt="Bannière" class="img-fluid">
+            </div>
+            <div class="col-md-6 text-end">
+                <h2 style="font-size: 24px; font-weight: bold; color: red;">🛠️ Back office 🛠️</h2>
+            </div>
+        </div>
+        <!-- Menu -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-4">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin.formations') }}">Formations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin.playlists') }}">Playlists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin.categories') }}">Catégories</a>
+                    </li>
+                </ul>
+                <a class="btn btn-outline-dark" href="{{ path('accueil') }}">🚪 Retour à l'accueil</a>
+            </div>
+        </nav>
+    </div>
+{% endblock %}
+{% block body %}
+{% endblock %}
+{% block footer %}
+    <footer class="container text-center mt-4">
+        <hr>
+        <p>
+            <small>
+                Consultez nos 
+                <a href="{{ path('cgu') }}" class="link-secondary">Conditions Générales d'Utilisation</a>
+            </small>
+        </p>
+    </footer>
+{% endblock %}
+{% block javascripts %}{% endblock %}

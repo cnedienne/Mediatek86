@@ -1,0 +1,41 @@
+{# empty Twig template #}
+{{ form_start(formFormation) }}
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">{{ form_label(formFormation.title) }}</label>
+            {{ form_widget(formFormation.title, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">{{ form_label(formFormation.description) }}</label>
+            {{ form_widget(formFormation.description, {'attr': {'class': 'form-control', 'rows': '4'}}) }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">{{ form_label(formFormation.playlist) }}</label>
+            {{ form_widget(formFormation.playlist, {'attr': {'class': 'form-select'}}) }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">{{ form_label(formFormation.categories) }}</label>
+            {{ form_widget(formFormation.categories, {'attr': {'class': 'form-select', 'multiple': 'multiple'}}) }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">{{ form_label(formFormation.publishedAt) }}</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                {{ form_widget(formFormation.publishedAt, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a href="{{ path('admin.formations') }}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Retour
+            </a>
+            <button type="submit" class="btn btn-success">
+                <i class="bi bi-check-circle"></i> Enregistrer
+            </button>
+        </div>
+
+        {{ form_end(formFormation) }}

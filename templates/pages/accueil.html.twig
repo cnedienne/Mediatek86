@@ -13,20 +13,24 @@
     </p>
     <p>
         Voici les <strong>deux dernières formations</strong> ajoutées au catalogue :
-        <table class="table">
-            <tr>
+        <table class="table" description="Table des deux dernières formations ajoutées avec photo et lien">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Détails de la formation</th>
+                </tr>
+            </thead>
+            <tbody>
                 {% for formation in formations %}
-                    <td>
-                        <div class="row">
-                            <div class="col">
-                                <!-- emplacement photo -->
-                                {% if formation.picture %}
-                                    <a href="{{ path('formations.showone', {id:formation.id}) }}">
-                                    <img src="{{ formation.picture }}" 
-                                         class="card-img-top" style="width:100%;height:auto;">
-                                    </a>    
-                                {% endif %}
-                            </div>
+                    <tr>
+                        <td>
+                            {% if formation.picture %}
+                                <a href="{{ path('formations.showone', {id:formation.id}) }}">
+                                    <img src="{{ formation.picture | default('default_image.jpg') }}" class="card-img-top" style="width:100%;height:auto;" alt="Image de la formation {{ formation.name | default('Formation sans nom') }}">
+                                </a>
+                            {% endif %}
+                        </td>
+                        <td>
                             <div class="col">
                                 <p>{{ formation.publishedatstring }}</p>
                                 <h5 class="text-info mt-1">
@@ -37,13 +41,11 @@
                                 {% for categorie in formation.categories %}
                                     {{ categorie.name }}&nbsp;
                                 {% endfor %}
-                            </div>    
-                        </div>                    
-                {% endfor %}    
-            </tr>
-
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>        
     </p>
 {% endblock %}
-
-

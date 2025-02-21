@@ -18,6 +18,7 @@
                 </th>
                 <th class="text-left align-top" scope="col">
                     catégories
+                    
                     <form class="form-inline mt-1" method="POST" action="{{ path('playlists.findallcontain', {champ:'id', table:'categories'}) }}">
                         <select class="form-select form-select-sm" name="recherche" id="recherche" onchange="this.form.submit()">
                             <option value=""></option>
@@ -31,6 +32,11 @@
                             {% endfor %}
                         </select>                    
                     </form>            
+                </th>
+                <th class="text-center align-top" scope="col">
+                    <a href="{{ path('playlists.sort', {champ: 'formationCount', ordre: 'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">📈</a>
+                    Nombre de formations
+                    <a href="{{ path('playlists.sort', {champ: 'formationCount', ordre: 'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">📉</a>
                 </th>
                 <th class="text-center align-top" scope="col">
                     &nbsp;
@@ -54,7 +60,11 @@
                                     &nbsp;{{ categories[c] }}                                  
                                 {% endfor %}
                             {% endif %}
-                        </td>            					
+                        </td>   
+                        <!-- Affichage du nombre de formations -->
+                        <td class="text-center">
+                            {{ playlists[k].formations|length }} <!-- Nombre de formations -->
+                        </td>                                            
                         <td class="text-center">
                             <a href="{{ path('playlists.showone', {id:playlists[k].id}) }}" class="btn btn-secondary">Voir détail</a>
                         </td> 					
