@@ -1,0 +1,12 @@
+{# templates/admin/playlist/playlist_edit.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container mt-5">
+<h1 class="mb-4 text-center">Modifier la playlist : <strong>{{ playlist.name }}</strong></h1>
+
+<div class="card shadow p-4">
+    {% include  "admin/playlist/playlist_form.html.twig" %}
+</div>
+</div>
+{% endblock %}

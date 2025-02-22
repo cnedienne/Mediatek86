@@ -101,5 +101,7 @@ public function sort($champ, $ordre): Response {
             'playlistcategories' => $playlistCategories,
             'playlistformations' => $playlistFormations
         ]);        
-    }       
+    }   
+   
 }
+
