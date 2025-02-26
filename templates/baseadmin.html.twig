@@ -4,11 +4,6 @@
 {% block stylesheets %}{% endblock %}
 {% block top %}
     <div class="container">
-        {% if is_granted("ROLE_ADMIN") %}
-            <div class="text-end">
-                <a href="{{ path('logout') }}" class="link-dark">se déconnecter</a>
-            </div>
-        {% endif %}
         <!-- titre -->
         <div class="text-left">
             <img src="{{ app.request.getBasePath()~'/banniere.jpg' }}" alt="img banniere" >
@@ -28,7 +23,12 @@
                     </li>
                 </ul>
             </div>
-            <div class="nav-item justify-content-md-end navbar-nav">
+            <div class="nav-item justify-content-md-end navbar-nav gap-2">
+             {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                <a class="btn btn-danger" href="{{ path('logout') }}">Se déconnecter</a>
+            {% else %}
+                <a class="btn btn-info" href="{{ path('login') }}">Se connecter</a>
+            {% endif %}
                 <a class="btn btn-outline-info" href="{{ path('formations') }}">&#128274; Espace utilisateur</a>
             </div>
         </nav>
