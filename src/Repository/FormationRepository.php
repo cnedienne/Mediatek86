@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Formation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 
 /**
  * @extends ServiceEntityRepository<Formation>
@@ -16,10 +17,17 @@ class FormationRepository extends ServiceEntityRepository
         parent::__construct($registry, Formation::class);
     }
 
-    public function add(Formation $entity): void
+    public function add(Formation $formation, bool $flush = false): void
     {
-        $this->getEntityManager()->persist($entity);
-        $this->getEntityManager()->flush();
+        $now = new \DateTime();
+        if ($formation->getPublishedAt() > $now) {
+            throw new Exception('The publication date cannot be in the future.');
+        }
+
+        $this->getEntityManager()->persist($formation);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
     }
 
     public function remove(Formation $entity): void
@@ -27,7 +35,6 @@ class FormationRepository extends ServiceEntityRepository
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
     }
-
     /**
      * Retourne toutes les formations triées sur un champ
      * @param type $champ
