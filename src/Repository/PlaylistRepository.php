@@ -16,12 +16,14 @@ class PlaylistRepository extends ServiceEntityRepository
         parent::__construct($registry, Playlist::class);
     }
 
+    // Ajoute une nouvelle playlist
     public function add(Playlist $entity): void
     {
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
     }
 
+    // Supprime une playlist
     public function remove(Playlist $entity): void
     {
         $this->getEntityManager()->remove($entity);
@@ -29,29 +31,31 @@ class PlaylistRepository extends ServiceEntityRepository
     }
     
     /**
-     * Retourne toutes les playlists triées sur le nom de la playlist
-     * @param type $champ
+     * Retourne toutes les playlists triées sur le nombre de formations
      * @param type $ordre
      * @return Playlist[]
      */
     public function findAllOrderByAmount($ordre): array {
-    return $this->createQueryBuilder('p')
-        ->leftJoin('p.formations', 'f')
-        ->groupBy('p.id')
-        ->orderBy('COUNT(f.id)', $ordre) // Trie en fonction du nombre de formations
-        ->getQuery()
-        ->getResult();
-}
-// src/Repository/PlaylistRepository.php
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.formations', 'f')
+            ->groupBy('p.id')
+            ->orderBy('COUNT(f.id)', $ordre) // Trie en fonction du nombre de formations
+            ->getQuery()
+            ->getResult();
+    }
 
+    /**
+     * Retourne toutes les playlists triées par nom
+     * @param type $ordre
+     * @return Playlist[]
+     */
     public function findAllOrderByName($ordre = 'ASC'){
-    return $this->createQueryBuilder('p')
-        ->orderBy('p.name', $ordre) // Tri par le nom de la playlist
-        ->getQuery()
-        ->getResult();
-}
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.name', $ordre) // Tri par le nom de la playlist
+            ->getQuery()
+            ->getResult();
+    }
      
-	
     /**
      * Enregistrements dont un champ contient une valeur
      * ou tous les enregistrements si la valeur est vide

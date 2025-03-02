@@ -11,33 +11,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Description of PlaylistsController
- *
- * @author emds
  */
 class PlaylistsController extends AbstractController {
     
-    // Définition des constantes pour les templates
+    // Constantes pour les templates
     private const PLAYLISTS_TEMPLATE = "pages/playlists.html.twig";
     private const PLAYLIST_DETAIL_TEMPLATE = "pages/playlist.html.twig";
     
-    /**
-     * 
-     * @var PlaylistRepository
-     */
     private $playlistRepository;
-    
-    /**
-     * 
-     * @var FormationRepository
-     */
     private $formationRepository;
-    
-    /**
-     * 
-     * @var CategorieRepository
-     */
     private $categorieRepository;    
     
+    // Constructeur avec injection de dépendances
     function __construct(PlaylistRepository $playlistRepository, 
             CategorieRepository $categorieRepository,
             FormationRepository $formationRespository) {
@@ -46,10 +31,7 @@ class PlaylistsController extends AbstractController {
         $this->formationRepository = $formationRespository;
     }
     
-    /**
-     * @Route("/playlists", name="playlists")
-     * @return Response
-     */
+    // Route pour afficher toutes les playlists
     #[Route('/playlists', name: 'playlists')]
     public function index(): Response{
         $playlists = $this->playlistRepository->findAllOrderByName('ASC');
@@ -60,24 +42,25 @@ class PlaylistsController extends AbstractController {
         ]);
     }
 
-#[Route('/playlists/tri/{champ}/{ordre}', name: 'playlists.sort')]
-public function sort($champ, $ordre): Response {
-    switch ($champ) {
-        case "name":
-            $playlists = $this->playlistRepository->findAllOrderByName($ordre);
-            break;
-        case "formationCount":
-            $playlists = $this->playlistRepository->findAllOrderByAmount($ordre);
-            break;
+    // Route pour trier les playlists
+    #[Route('/playlists/tri/{champ}/{ordre}', name: 'playlists.sort')]
+    public function sort($champ, $ordre): Response {
+        switch ($champ) {
+            case "name":
+                $playlists = $this->playlistRepository->findAllOrderByName($ordre);
+                break;
+            case "formationCount":
+                $playlists = $this->playlistRepository->findAllOrderByAmount($ordre);
+                break;
+        }
+        $categories = $this->categorieRepository->findAll();
+        return $this->render("pages/playlists.html.twig", [
+            'playlists' => $playlists,
+            'categories' => $categories
+        ]);
     }
-    $categories = $this->categorieRepository->findAll();
-    return $this->render("pages/playlists.html.twig", [
-        'playlists' => $playlists,
-        'categories' => $categories
-    ]);
-}
     
-
+    // Route pour rechercher dans les playlists
     #[Route('/playlists/recherche/{champ}/{table}', name: 'playlists.findallcontain')]
     public function findAllContain($champ, Request $request, $table=""): Response{
         $valeur = $request->get("recherche");
@@ -91,6 +74,7 @@ public function sort($champ, $ordre): Response {
         ]);
     }  
 
+    // Route pour afficher une playlist spécifique
     #[Route('/playlists/playlist/{id}', name: 'playlists.showone')]
     public function showOne($id): Response{
         $playlist = $this->playlistRepository->find($id);

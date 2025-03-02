@@ -17,6 +17,12 @@ class FormationRepository extends ServiceEntityRepository
         parent::__construct($registry, Formation::class);
     }
 
+    /**
+     * Ajoute une formation à la base de données
+     * @param Formation $formation
+     * @param bool $flush
+     * @throws Exception
+     */
     public function add(Formation $formation, bool $flush = false): void
     {
         $now = new \DateTime();
@@ -30,11 +36,16 @@ class FormationRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Supprime une formation de la base de données
+     * @param Formation $entity
+     */
     public function remove(Formation $entity): void
     {
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
     }
+
     /**
      * Retourne toutes les formations triées sur un champ
      * @param type $champ

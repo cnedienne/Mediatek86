@@ -33,16 +33,19 @@ class Playlist
         $this->formations = new ArrayCollection();
     }
 
+    // Retourne l'ID de la playlist
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    // Retourne le nom de la playlist
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    // Définit le nom de la playlist
     public function setName(?string $name): static
     {
         $this->name = $name;
@@ -50,11 +53,13 @@ class Playlist
         return $this;
     }
 
+    // Retourne la description de la playlist
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    // Définit la description de la playlist
     public function setDescription(?string $description): static
     {
         $this->description = $description;
@@ -70,6 +75,7 @@ class Playlist
         return $this->formations;
     }
 
+    // Ajoute une formation à la playlist
     public function addFormation(Formation $formation): static
     {
         if (!$this->formations->contains($formation)) {
@@ -80,6 +86,7 @@ class Playlist
         return $this;
     }
 
+    // Supprime une formation de la playlist
     public function removeFormation(Formation $formation): static
     {
         if ($this->formations->removeElement($formation)) {
@@ -97,15 +104,15 @@ class Playlist
      */
     public function getCategoriesPlaylist() : Collection
     {
-    $categories = new ArrayCollection();
-    foreach($this->formations as $formation) {
-        $categoriesFormation = $formation->getCategories();
-        foreach($categoriesFormation as $categorieFormation) {
-            if (!$categories->contains($categorieFormation->getName())) {
-                $categories->add($categorieFormation->getName());
+        $categories = new ArrayCollection();
+        foreach($this->formations as $formation) {
+            $categoriesFormation = $formation->getCategories();
+            foreach($categoriesFormation as $categorieFormation) {
+                if (!$categories->contains($categorieFormation->getName())) {
+                    $categories->add($categorieFormation->getName());
+                }
             }
         }
+        return $categories;
     }
-    return $categories;
-}
 }

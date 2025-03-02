@@ -9,6 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+    // Route pour la page de connexion
     #[Route('/login', name: 'login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -18,6 +19,7 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    // Route pour la déconnexion
     #[Route('/logout', name: 'logout')]
     public function logout() {}
 }

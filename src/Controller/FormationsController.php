@@ -31,10 +31,7 @@ class FormationsController extends AbstractController {
         $this->categorieRepository= $categorieRepository;
     }
     
-    /**
-     * Liste toutes les formations
-     */
-    
+    // Route pour afficher toutes les formations
     #[Route('/formations', name: 'formations')]
     public function index(): Response {
         $formations = $this->formationRepository->findAll();
@@ -45,10 +42,7 @@ class FormationsController extends AbstractController {
         ]);
     }
 
-
-    /**
-     * Trie les formations par champ, ordre et table
-     */
+    // Route pour trier les formations
     #[Route('/formations/tri/{champ}/{ordre}/{table}', name: 'formations.sort')]
     public function sort($champ, $ordre, $table=""): Response {
         $formations = $this->formationRepository->findAllOrderBy($champ, $ordre, $table);
@@ -59,9 +53,7 @@ class FormationsController extends AbstractController {
         ]);
     }     
 
-    /**
-     * Recherche dans les formations
-     */
+    // Route pour rechercher dans les formations
     #[Route('/formations/recherche/{champ}/{table}', name: 'formations.findAllContain')]
     public function findAllContain($champ, Request $request, $table=""): Response {
         $valeur = $request->get("recherche");
@@ -75,9 +67,7 @@ class FormationsController extends AbstractController {
         ]);
     }  
 
-    /**
-     * Affiche le détail d'une formation
-     */
+    // Route pour afficher le détail d'une formation
     #[Route('/formations/formation/{id}', name: 'formations.showone')]
     public function showOne($id): Response {
         $formation = $this->formationRepository->find($id);
@@ -91,9 +81,7 @@ class FormationsController extends AbstractController {
         ]);        
     }
     
-    /**
-     * Action pour éditer une formation
-     */
+    // Route pour éditer une formation
     #[Route('/admin/formations/edit/{id}', name: 'formations.edit')]
     public function edit($id, Request $request): Response {
         $formation = $this->formationRepository->find($id);

@@ -29,16 +29,19 @@ class Categorie
         $this->formations = new ArrayCollection();
     }
 
+    // Retourne l'ID de la catégorie
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    // Retourne le nom de la catégorie
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    // Définit le nom de la catégorie
     public function setName(?string $name): static
     {
         $this->name = $name;
@@ -46,14 +49,13 @@ class Categorie
         return $this;
     }
 
-    /**
-     * @return Collection<int, Formation>
-     */
+    // Retourne les formations associées à la catégorie
     public function getFormations(): Collection
     {
         return $this->formations;
     }
 
+    // Ajoute une formation à la catégorie
     public function addFormation(Formation $formation): static
     {
         if (!$this->formations->contains($formation)) {
@@ -64,12 +66,11 @@ class Categorie
         return $this;
     }
 
+    // Supprime une formation de la catégorie
     public function removeFormation(Formation $formation): static
     {
         if ($this->formations->removeElement($formation)) {
             $formation->removeCategory($this);
         }
-
-        return $this;
     }
 }

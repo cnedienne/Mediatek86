@@ -7,10 +7,10 @@ security:
             memory:
                 users:
                     admin:
-                        password: '$2y$13$pKxTju.8.l0f0f6gbUU8uekOgvv8Bd3S7JE2MWPrcPjMpwHppCuU2'
+                        password: '$2y$13$FR2eV8oFPBWBd7QsbxgITu63mvFBOew8LQYfE2mXaXXS/BsBnVGae'
                         roles: ['ROLE_ADMIN']
                     user:
-                        password: '$2y$13$6NueN1OOUF1MnHEsAXAxW.Hjx5L90/RT8oDKE1nT.L8Igj0ZU/3d'
+                        password: '$2y$13$I/fc6ndhZYB3QNRlOf6JS.dmN5IlFnSg5BWnciEFQlIhtf.F8XUuy'
                         roles: ['ROLE_USER']
 
     firewalls:
