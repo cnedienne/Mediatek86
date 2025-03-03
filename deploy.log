@@ -1,0 +1,79 @@
+Déploiement commencé à Mon Mar  3 08:29:40 PM CET 2025
+fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+Composer could not find a composer.json file in /home/mediatek
+To initialize a project, please create a composer.json file. See https://getcomposer.org/basic-usage
+Could not open input file: bin/console
+Déploiement terminé à Mon Mar  3 08:29:41 PM CET 2025
+Déploiement commencé à Mon Mar  3 08:30:17 PM CET 2025
+fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+Composer could not find a composer.json file in /home/mediatek
+To initialize a project, please create a composer.json file. See https://getcomposer.org/basic-usage
+Could not open input file: bin/console
+Déploiement terminé à Mon Mar  3 08:30:19 PM CET 2025
+Déploiement commencé à Mon Mar  3 08:30:51 PM CET 2025
+From github.com:Amyyach/Mediatek86
+ * branch            main       -> FETCH_HEAD
+   8a5feb0..fe27ac2  main       -> origin/main
+Updating 8a5feb0..fe27ac2
+Fast-forward
+ templates/basefront.html.twig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Installing dependencies from lock file
+Verifying lock file contents can be installed on current platform.
+Package operations: 0 installs, 0 updates, 35 removals
+  - Removing theseer/tokenizer (1.2.3)
+  - Removing symfony/web-profiler-bundle (v6.4.19)
+  - Removing symfony/phpunit-bridge (v7.2.0)
+  - Removing symfony/maker-bundle (v1.62.1)
+  - Removing symfony/dom-crawler (v6.4.19)
+  - Removing symfony/debug-bundle (v6.4.13)
+  - Removing symfony/css-selector (v6.4.13)
+  - Removing symfony/browser-kit (v6.4.19)
+  - Removing sebastian/version (3.0.2)
+  - Removing sebastian/type (3.2.1)
+  - Removing sebastian/resource-operations (3.0.4)
+  - Removing sebastian/recursion-context (4.0.5)
+  - Removing sebastian/object-reflector (2.0.4)
+  - Removing sebastian/object-enumerator (4.0.4)
+  - Removing sebastian/lines-of-code (1.0.4)
+  - Removing sebastian/global-state (5.0.7)
+  - Removing sebastian/exporter (4.0.6)
+  - Removing sebastian/environment (5.1.5)
+  - Removing sebastian/diff (4.0.6)
+  - Removing sebastian/complexity (2.0.3)
+  - Removing sebastian/comparator (4.0.8)
+  - Removing sebastian/code-unit-reverse-lookup (2.0.3)
+  - Removing sebastian/code-unit (1.0.8)
+  - Removing sebastian/cli-parser (1.0.2)
+  - Removing phpunit/phpunit (9.6.22)
+  - Removing phpunit/php-timer (5.0.3)
+  - Removing phpunit/php-text-template (2.0.4)
+  - Removing phpunit/php-invoker (3.1.1)
+  - Removing phpunit/php-file-iterator (3.0.6)
+  - Removing phpunit/php-code-coverage (9.2.32)
+  - Removing phar-io/version (3.2.1)
+  - Removing phar-io/manifest (2.0.4)
+  - Removing nikic/php-parser (v5.4.0)
+  - Removing myclabs/deep-copy (1.13.0)
+  - Removing masterminds/html5 (2.9.0)
+  0/27 [>---------------------------]   0%
+ 10/27 [==========>-----------------]  37%
+ 19/27 [===================>--------]  70%
+ 24/27 [========================>---]  88%
+ 27/27 [============================] 100%
+Generating optimized autoload files
+80 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+
+Run composer recipes at any time to see the status of your Symfony recipes.
+
+
+ // Clearing the cache for the prod environment with debug false                                                        
+
+{"message":"User Deprecated: Please install the \"intl\" PHP extension for best performance.","context":{"exception":{"class":"ErrorException","message":"User Deprecated: Please install the \"intl\" PHP extension for best performance.","code":0,"file":"/home/mediatek/www/Mediatek86/vendor/symfony/framework-bundle/DependencyInjection/FrameworkExtension.php:305"}},"level":200,"level_name":"INFO","channel":"deprecation","datetime":"2025-03-03T20:31:06.478564+01:00","extra":{}}
+{"message":"User Deprecated: Since doctrine/doctrine-bundle 2.13: Enabling the controller resolver automapping feature has been deprecated. Symfony Mapped Route Parameters should be used as replacement.","context":{"exception":{"class":"ErrorException","message":"User Deprecated: Since doctrine/doctrine-bundle 2.13: Enabling the controller resolver automapping feature has been deprecated. Symfony Mapped Route Parameters should be used as replacement.","code":0,"file":"/home/mediatek/www/Mediatek86/vendor/doctrine/doctrine-bundle/src/DependencyInjection/DoctrineExtension.php:541"}},"level":200,"level_name":"INFO","channel":"deprecation","datetime":"2025-03-03T20:31:06.586642+01:00","extra":{}}
+ [OK] Cache for the "prod" environment (debug=false) was successfully cleared.                                          
+
+Déploiement terminé à Mon Mar  3 08:31:14 PM CET 2025
