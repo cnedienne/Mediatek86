@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Se déplacer dans le dossier du projet
+cd ~/www/Mediatek86 || exit
+
 # Enregistre l'heure du déploiement dans le fichier de log
 echo "Déploiement commencé à $(date)" >> ~/www/Mediatek86/deploy.log
 
