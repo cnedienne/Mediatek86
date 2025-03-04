@@ -1,14 +1,23 @@
+name: Deploy to Alwaysdata
+
+on:
+  push:
+    branches:
+      - main  # Ou la branche que tu veux déployer
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
 
-      - name: Setup SSH and deploy
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Alwaysdata
         uses: appleboy/ssh-action@v0.1.10
         with:
-          host: "ssh-mediatek.alwaysdata.net"
-          username: "mediatek"
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: "bash ~/deploy.sh"
+          host: ssh-mediatek.alwaysdata.net
+          username: mediatek
+          key: ${{ secrets.ALWAYSDATA_SSH_KEY }}
+          script: |
+            bash ~/deploy.sh
