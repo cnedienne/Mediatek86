@@ -19,11 +19,9 @@ Le bas de page contient un lien pour accéder à la page des CGU : ce lien est p
 ![image](https://github.com/user-attachments/assets/2aac0001-4a85-4959-8b04-25bd12ce314f)
 
 
-![img5](https://github.com/user-attachments/assets/bbe8934f-8d4b-4da2-8216-60b96b726d8a)
 ### Détail d'une playlist
 ![image](https://github.com/user-attachments/assets/7cb8d027-d9ba-4644-9988-08f253d5d814)
 
-![img6](https://github.com/user-attachments/assets/f216a9e7-084a-4683-9b4e-cada5574a0e2)
 ## Back office
 ### Login
 
